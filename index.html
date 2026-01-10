@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>LTT Review | Nền tảng đánh giá giáo viên</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-slate-50 text-slate-900">
+    <nav class="fixed top-6 inset-x-6 z-50 flex justify-center">
+        <div class="w-full max-w-6xl bg-white/70 backdrop-blur-xl rounded-full px-8 py-4 flex justify-between items-center shadow-xl border border-white/40">
+            <div class="flex items-center gap-3">
+                <img src="logo.png" alt="Logo" class="w-10 h-10 rounded-xl shadow-lg">
+                <span class="font-black text-blue-600 italic uppercase">LTT Review</span>
+            </div>
+            <div class="flex gap-4">
+                <button onclick="Modals.openAddTeacher()" class="bg-blue-600 text-white px-6 py-2.5 rounded-full font-bold text-sm shadow-blue-200 shadow-lg hover:scale-105 transition">Góp ý GV</button>
+                <button onclick="Modals.openAdminLogin()" class="w-10 h-10 rounded-full flex items-center justify-center text-slate-400 border border-slate-100"><i class="fas fa-user-shield"></i></button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto pt-40 px-6">
+        <div class="text-center mb-16">
+            <h1 class="text-6xl font-black mb-8 tracking-tighter">Chọn người thầy, <br><span class="text-blue-600">Chọn tương lai.</span></h1>
+            <input id="mainSearch" type="text" placeholder="Tìm tên giáo viên hoặc bộ môn..." class="max-w-2xl w-full px-8 py-5 rounded-full bg-white shadow-2xl outline-none border-2 border-transparent focus:border-blue-300 transition-all font-bold">
+        </div>
+        <div id="teacherGrid" class="grid grid-cols-1 md:grid-cols-3 gap-8"></div>
+    </main>
+
+    <div id="modalOverlay" class="fixed inset-0 bg-blue-900/20 backdrop-blur-md hidden z-[100] flex items-center justify-center p-4">
+        <div id="modalContent" class="bg-white w-full max-w-xl rounded-[3rem] p-10 shadow-2xl relative"></div>
+    </div>
+
+    <script type="module" src="js/app-main.js"></script>
+</body>
+</html>
