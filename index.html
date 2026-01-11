@@ -2,37 +2,61 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <title>LTT Review | Nền tảng đánh giá giáo viên</title>
+    <title>LTT Review | Trang chủ</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-slate-50 text-slate-900">
-    <nav class="fixed top-6 inset-x-6 z-50 flex justify-center">
-        <div class="w-full max-w-6xl bg-white/70 backdrop-blur-xl rounded-full px-8 py-4 flex justify-between items-center shadow-xl border border-white/40">
+<body class="pb-20">
+    <header class="bg-white/80 backdrop-blur-md sticky top-0 z-40 border-b border-blue-100">
+        <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
             <div class="flex items-center gap-3">
-                <img src="logo.png" alt="Logo" class="w-10 h-10 rounded-xl shadow-lg">
-                <span class="font-black text-blue-600 italic uppercase">LTT Review</span>
+                <img src="logo.png" class="h-10">
+                <span class="font-extrabold text-blue-900 text-xl tracking-tight">LTT REVIEW</span>
             </div>
-            <div class="flex gap-4">
-                <button onclick="Modals.openAddTeacher()" class="bg-blue-600 text-white px-6 py-2.5 rounded-full font-bold text-sm shadow-blue-200 shadow-lg hover:scale-105 transition">Góp ý GV</button>
-                <button onclick="Modals.openAdminLogin()" class="w-10 h-10 rounded-full flex items-center justify-center text-slate-400 border border-slate-100"><i class="fas fa-user-shield"></i></button>
+            <div class="flex-1 max-w-md mx-8 relative">
+                <input id="searchInput" type="text" placeholder="Tìm kiếm thầy cô..." class="w-full pl-10 pr-4 py-2 bg-slate-100 rounded-full text-sm focus:bg-white focus:ring-2 ring-blue-400 outline-none transition">
+                <i class="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
             </div>
+            <a href="landing.html" class="text-sm font-bold text-slate-500 hover:text-blue-600">Thoát</a>
         </div>
-    </nav>
+    </header>
 
-    <main class="max-w-7xl mx-auto pt-40 px-6">
-        <div class="text-center mb-16">
-            <h1 class="text-6xl font-black mb-8 tracking-tighter">Chọn người thầy, <br><span class="text-blue-600">Chọn tương lai.</span></h1>
-            <input id="mainSearch" type="text" placeholder="Tìm tên giáo viên hoặc bộ môn..." class="max-w-2xl w-full px-8 py-5 rounded-full bg-white shadow-2xl outline-none border-2 border-transparent focus:border-blue-300 transition-all font-bold">
+    <main class="max-w-6xl mx-auto px-4 mt-8">
+        <section class="mb-12">
+            <h2 class="text-2xl font-black text-blue-900 mb-6 flex items-center"><i class="fas fa-crown text-yellow-500 mr-3"></i> TOP 3 YÊU THÍCH</h2>
+            <div id="topTeachers" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                </div>
+        </section>
+
+        <div class="flex gap-4 mb-6 overflow-x-auto pb-2">
+            <select id="filterSubject" class="px-4 py-2 rounded-full bg-white border border-slate-200 text-sm font-bold text-slate-600 outline-none hover:border-blue-400 cursor-pointer">
+                <option value="all">Tất cả các Tổ</option>
+                <option value="Ban giám hiệu">Ban giám hiệu</option>
+                <option value="Tổ Văn phòng">Tổ Văn phòng</option>
+                <option value="Tổ Toán">Tổ Toán</option>
+                <option value="Tổ Vật lý">Tổ Vật lý</option>
+                <option value="Tổ Hóa học">Tổ Hóa học</option>
+                <option value="Tổ Tiếng Anh">Tổ Tiếng Anh</option>
+                <option value="Tổ Ngữ văn">Tổ Ngữ văn</option>
+                <option value="Tổ Sinh học">Tổ Sinh học</option>
+                <option value="Tổ Tin học">Tổ Tin học</option>
+                <option value="Tổ Lịch sử">Tổ Lịch sử</option>
+                <option value="Tổ Địa lí">Tổ Địa lí</option>
+                <option value="Tổ Thể dục - Âm nhạc - Mĩ thuật">Tổ TD - Nhạc - Họa</option>
+            </select>
+            <select id="filterSort" class="px-4 py-2 rounded-full bg-white border border-slate-200 text-sm font-bold text-slate-600 outline-none hover:border-blue-400 cursor-pointer">
+                <option value="name">Xếp tên A-Z</option>
+                <option value="rating">Điểm đánh giá</option>
+            </select>
         </div>
-        <div id="teacherGrid" class="grid grid-cols-1 md:grid-cols-3 gap-8"></div>
+
+        <div id="teacherList" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            </div>
     </main>
 
-    <div id="modalOverlay" class="fixed inset-0 bg-blue-900/20 backdrop-blur-md hidden z-[100] flex items-center justify-center p-4">
-        <div id="modalContent" class="bg-white w-full max-w-xl rounded-[3rem] p-10 shadow-2xl relative"></div>
-    </div>
+    <div id="modalContainer"></div>
 
-    <script type="module" src="js/app-main.js"></script>
+    <script type="module" src="js/app-guest.js"></script>
 </body>
 </html>

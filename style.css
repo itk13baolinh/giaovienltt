@@ -1,21 +1,73 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
 
-body { font-family: 'Plus Jakarta Sans', sans-serif; }
-
-.teacher-card {
-    background: white;
-    border-radius: 3rem;
-    padding: 2.5rem;
-    border: 1px solid #f1f5f9;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+:root {
+    --fpt-blue: #0054a6; /* Màu gốc FPT tham khảo */
+    --pastel-bg: #f0f9ff;
+    --pastel-card: #ffffff;
+    --pastel-accent: #bae6fd;
+    --text-main: #0f172a;
 }
 
-.teacher-card:hover {
-    transform: translateY(-12px);
-    box-shadow: 0 40px 80px -20px rgba(59, 130, 246, 0.15);
-    border-color: rgba(59, 130, 246, 0.2);
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--pastel-bg);
+    color: var(--text-main);
 }
 
-/* Tùy chỉnh thanh cuộn bo tròn */
-::-webkit-scrollbar { width: 8px; }
-::-webkit-scrollbar-thumb { background: #e2e8f0; border-radius: 10px; }
+/* Thẻ ID Card CCCD Style */
+.id-card-layout {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 20px;
+    background: #fff;
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    position: relative;
+    border: 1px solid #e2e8f0;
+}
+
+.id-photo-section {
+    background: #eff6ff;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border: 2px solid var(--pastel-accent);
+}
+
+.id-info-section h2 {
+    color: var(--fpt-blue);
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+}
+
+.tag-badge {
+    background: #e0f2fe;
+    color: #0369a1;
+    padding: 4px 12px;
+    border-radius: 99px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.btn-fpt {
+    background: linear-gradient(135deg, #3b82f6 0%, #0054a6 100%);
+    color: white;
+    font-weight: 600;
+    transition: all 0.3s;
+}
+.btn-fpt:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,84,166,0.3);
+}
+
+/* Modal Overlay */
+.modal-overlay {
+    background: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(5px);
+}

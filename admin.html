@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>LTT Admin | Quản trị</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-slate-100">
+    <div class="flex h-screen">
+        <aside class="w-64 bg-white shadow-xl z-10 flex flex-col">
+            <div class="p-6 border-b flex items-center gap-2">
+                <img src="logo.png" class="w-8">
+                <span class="font-black text-blue-900">ADMIN LTT</span>
+            </div>
+            <nav class="flex-1 p-4 space-y-2">
+                <button onclick="switchTab('teachers')" class="w-full text-left p-3 rounded-lg hover:bg-blue-50 font-bold text-slate-700 flex items-center gap-3">
+                    <i class="fas fa-users"></i> Quản lý Giáo viên
+                </button>
+                <button onclick="switchTab('reviews')" class="w-full text-left p-3 rounded-lg hover:bg-blue-50 font-bold text-slate-700 flex items-center gap-3">
+                    <i class="fas fa-comment-dots"></i> Duyệt Đánh giá
+                </button>
+            </nav>
+            <div class="p-4 border-t">
+                <button id="btnLogout" class="w-full py-2 text-red-500 font-bold text-sm bg-red-50 rounded-lg">Đăng xuất</button>
+            </div>
+        </aside>
+
+        <main class="flex-1 p-8 overflow-y-auto">
+            <div id="tabTeachers">
+                <h2 class="text-2xl font-black text-slate-800 mb-6">Thêm Giáo viên mới</h2>
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 max-w-2xl">
+                    <div class="grid grid-cols-2 gap-4 mb-4">
+                        <input id="addName" type="text" placeholder="Họ và tên" class="p-3 border rounded-lg bg-slate-50 font-bold">
+                        <input id="addYear" type="number" placeholder="Năm sinh (VD: 1985)" class="p-3 border rounded-lg bg-slate-50" oninput="calcAge(this.value)">
+                    </div>
+                    <div class="flex gap-4 items-center mb-6">
+                        <p class="text-sm font-bold text-slate-400">Tuổi tự động: <span id="autoAge" class="text-blue-600">---</span></p>
+                        <select id="addGender" class="p-3 border rounded-lg bg-slate-50">
+                            <option value="nam">Nam</option>
+                            <option value="nu">Nữ</option>
+                        </select>
+                        <select id="addSubj" class="p-3 border rounded-lg bg-slate-50 flex-1 font-medium text-slate-700">
+                            <option value="" disabled selected>-- Chọn Tổ/Ban --</option>
+                            <option value="Ban giám hiệu">Ban giám hiệu</option>
+                            <option value="Tổ Văn phòng">Tổ Văn phòng</option>
+                            <option value="Tổ Toán">Tổ Toán</option>
+                            <option value="Tổ Vật lý">Tổ Vật lý</option>
+                            <option value="Tổ Hóa học">Tổ Hóa học</option>
+                            <option value="Tổ Tiếng Anh">Tổ Tiếng Anh</option>
+                            <option value="Tổ Ngữ văn">Tổ Ngữ văn</option>
+                            <option value="Tổ Sinh học">Tổ Sinh học</option>
+                            <option value="Tổ Tin học">Tổ Tin học</option>
+                            <option value="Tổ Lịch sử">Tổ Lịch sử</option>
+                            <option value="Tổ Địa lí">Tổ Địa lí</option>
+                            <option value="Tổ Thể dục - Âm nhạc - Mĩ thuật">Tổ Thể dục - Âm nhạc - Mĩ thuật</option>
+                        </select>
+                    </div>
+                    <button onclick="window.addTeacher()" class="w-full btn-fpt py-3 rounded-xl shadow-lg">LƯU THÔNG TIN</button>
+                </div>
+                
+                <h3 class="mt-8 font-bold text-lg mb-4">Danh sách hiện tại</h3>
+                <div id="adminTeacherList" class="grid grid-cols-3 gap-4"></div>
+            </div>
+
+            <div id="tabReviews" class="hidden">
+                <h2 class="text-2xl font-black text-slate-800 mb-6">Đánh giá cần duyệt</h2>
+                <div id="pendingList" class="space-y-4"></div>
+            </div>
+        </main>
+    </div>
+
+    <div id="modalContainer"></div>
+
+    <script type="module" src="js/app-admin.js"></script>
+    <script>
+        // Inline script cho UI logic đơn giản
+        function switchTab(tab) {
+            document.getElementById('tabTeachers').classList.add('hidden');
+            document.getElementById('tabReviews').classList.add('hidden');
+            document.getElementById(tab === 'teachers' ? 'tabTeachers' : 'tabReviews').classList.remove('hidden');
+        }
+        function calcAge(year) {
+            if(year) document.getElementById('autoAge').innerText = new Date().getFullYear() - year;
+        }
+        window.switchTab = switchTab;
+        window.calcAge = calcAge;
+    </script>
+</body>
+</html>
